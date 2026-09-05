@@ -1,0 +1,21 @@
+# ─── VOLE-Camera: ignored vendor research dependencies ─────────────────────────
+# These three repositories are cloned read-only siblings examined for the
+# architecture/prior-art record (see PROJECT_STATE.md §"Reread sources").
+# They are deliberately NOT part of the vole-camera crate or git history:
+# - entropyfs  — optional persistence substrate (Phase P analogue)
+# - dsfb       — zero-authority encoder search governance (later)
+# - vole       — the direct downstream parent / interop boundary (vole-video)
+/entropyfs/
+/dsfb/
+/vole/
+
+# ─── research: prior-art paper, TeX source, and the implementation brief ──────
+# Kept locally for reference; large and non-normative. Not part of the crate.
+/research/
+
+# ─── Rust build artifacts ─────────────────────────────────────────────────────
+/target/
+
+# ─── local env / editor ───────────────────────────────────────────────────────
+*.swp
+.DS_Store

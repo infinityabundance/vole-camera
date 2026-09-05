@@ -1,0 +1,60 @@
+[package]
+name = "vole-camera"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.98"
+description = "VOLE-Camera — Sensor-native procedural entropy factorization and direct visual materialization."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/infinityabundance/vole-camera"
+readme = "README.md"
+keywords = ["camera", "sensor", "bayer", "procedural", "materialization"]
+categories = ["multimedia", "scientific"]
+autobins = false
+
+# VOLE-Camera is ONE self-contained native Rust crate. It owns the camera-
+# specific layer (sensor sample domain, capture state, rolling-shutter timing,
+# camera telemetry, calibration, sensor-space predictors, camera-native root
+# seed, camera-specific evidence). VOLE (vole-video) owns general video
+# representation via an optional interop boundary; DSFB is never a normative
+# decode dependency and EntropyFS is never part of the standalone build.
+[[bin]]
+name = "vole-camera"
+path = "src/main.rs"
+
+# The headless codec core builds without any window dependencies. The optional
+# `playback` feature pulls in winit + softbuffer for the desktop direct player,
+# and the optional `pi-libcamera` feature pulls in the safe libcamera FFI bindings
+# for the (non-normative) Raspberry Pi hardware transport boundary.
+[features]
+default = []
+playback = ["dep:winit", "dep:softbuffer"]
+pi-libcamera = ["dep:libcamera"]
+
+[dependencies]
+blake3 = "1"
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+
+# Optional: direct desktop presentation (Phase G, §69). Never a normative
+# decode dependency.
+winit = { version = "0.30", optional = true }
+softbuffer = { version = "0.4", optional = true }
+
+# Optional: safe Rust bindings to libcamera (Phase J, §103). NON-NORMATIVE
+# hardware transport only; a recording never requires libcamera to decode.
+libcamera = { version = "0.7", optional = true }
+
+# Optional: general video representation interop (§11). VOLE-Camera owns the
+# camera-specific layer and delegates general raster video semantics to
+# vole-video where its public API can express the required domain.
+# NOTE: kept commented until the interop boundary is exercised in a later
+# phase; uncomment when the API review (§168) lands.
+# vole-video = { version = "0.22", optional = true }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+[profile.bench]
+opt-level = 3
