@@ -6,6 +6,8 @@ Sensor-native procedural entropy factorization and direct visual materialization
   <img src="assets/vole.png" alt="VOLE-Camera logo" width="313">
 </p>
 
+> de Beer, R. (2026). VOLE-Camera: Sensor-Native Procedural Entropy Factorization and Direct Visual Materialization - Broad Prior-Art Technical Disclosure and Research Architecture (Version v1.0). Zenodo. <https://doi.org/10.5281/zenodo.22312959>
+
 > **VOLE-Camera is an experimental native-Rust implementation of sensor-native
 > procedural entropy factorization. Its current proof is a deterministic
 > simulated sensor pipeline; physical-camera claims remain unsealed.**
