@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/infinityabundance/vole-camera"
 readme = "README.md"
 keywords = ["camera", "sensor", "bayer", "procedural", "materialization"]
-categories = ["multimedia", "scientific"]
+categories = ["multimedia", "compression", "science"]
 autobins = false
 
 # VOLE-Camera is ONE self-contained native Rust crate. It owns the camera-
