@@ -64,6 +64,7 @@ pub mod cfa;
 pub mod domain;
 pub mod error;
 pub mod limits;
+pub mod raw;
 pub mod time;
 
 pub use cfa::{CfaComponent, CfaPattern};
